@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  
+  }
+
+  .total-content{
+    height: 100vh;
+    background-color: var(--light-blue);
+  }
+
+
+  .container{
+    padding-left: 13%;
+    padding-top: 7%;
+  }
+
+  form input{
+    padding: 20px;
+  }
+
+  form{
+    gap: 20px;
+  }
+
+  .btn{
+    background-color: var(--dark-blue);
+    padding: 8px;
+    color: white;
+  }
+
+  .login{
+    color: rgb(191, 191, 191);
+  }
+
+  @media(max-width:576px){
+    form{
+      width: 80%;
+    }
+  }

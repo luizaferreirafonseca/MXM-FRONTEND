@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4 mb-5">
+    <div class="container2 row d-flex flex-column">
+        <div class="container1 col-lg-8 d-flex flex-column">
+            <div class="note pt-5">
+                <h2 class="fs-2">Gerenciador de comunicados</h2>
+                <p class="text">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com todos os responsáveis dos alunos de nossa escola.</p>
+            </div>
+            <div class="content-form d-flex flex-column">
+                <h2 class="fs-5">Insira os dados necessários para envio</h2>
+                <div class="form-container">
+                    <form [formGroup]="form">
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Para</label>
+                            @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
+                                <p>O campo nome é obrigatório.</p>
+                            }
+                            @if (form.get('nome')?.hasError('minlength') && form.get('nome')?.touched) {
+                                <p>O campo nome precisa conter pelo menos 3 caracteres.</p>
+                            }
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Insira o e-mail" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNome" class="form-label">Nome do(a) responsável</label>
+                            <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome" formControlName="name">
+                        </div>
+
+                        <p-editor formControlName="content" [style]="{ height: '320px' }">
+                            <ng-template pTemplate="header">
+                                <span class="ql-formats">
+                                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                                    <button type="button" class="ql-underline" aria-label="Underline"></button>
+                                    <select class="ql-align" #alignSelect>
+                                    </select>
+                                    <select class="ql-size" #fontSizeSelect >
+                                    </select>
+                                </span>
+                            </ng-template>
+                          </p-editor>
+
+
+
+                        <button type="submit" class="btn btn-primary" (click)="handleClick()">Enviar</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-table col-lg-8">
+            <h2 class="title mb-4 fs-4">Colaboradores com acesso</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-head">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>João Silva</td>
+                            <td>joao&#64;escolacooper.com</td>
+                            <td>Gerente de RH</td>
+                        </tr>
+                        <tr>
+                            <td>Maria Oliveira</td>
+                            <td>maria&#64;escolacooper.com</td>
+                            <td>Secretária Pedagógica</td>
+                        </tr>
+                        <tr>
+                            <td>Lia Queiroz</td>
+                            <td>lia&#64;escolacooper.com</td>
+                            <td>Coordenadora Pedagógica</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

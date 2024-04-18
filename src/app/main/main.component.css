@@ -1,0 +1,46 @@
+
+
+* {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+.container1{
+    gap: 60px;
+}
+
+.form-container{
+    background-color: var(--orange);
+    height: 70vh; 
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.content-form{
+    gap: 15px;
+}
+
+
+.container2{
+    display: flex;
+    gap: 50px;
+
+}
+
+.note h2{
+    color: rgb(73, 73, 73);
+}
+
+
+.title{
+    color: rgb(3, 3, 53);
+}
+
+.table-head tr th{
+    color: var(--dark-blue);
+}
+
