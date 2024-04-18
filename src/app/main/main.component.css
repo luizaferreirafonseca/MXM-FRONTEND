@@ -20,6 +20,8 @@
 
 }
 
+
+
 .content-form{
     gap: 15px;
 }
@@ -44,3 +46,8 @@
     color: var(--dark-blue);
 }
 
+
+
+button{
+    margin-top: 8px;
+}

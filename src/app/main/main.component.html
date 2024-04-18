@@ -10,7 +10,7 @@
             <div class="content-form d-flex flex-column">
                 <h2 class="fs-5">Insira os dados necessários para envio</h2>
                 <div class="form-container">
-                    <form [formGroup]="form">
+                    <form [formGroup]="form" class="d-flex flex-column">
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">Para</label>
                             @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
@@ -26,7 +26,8 @@
                             <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome" formControlName="name">
                         </div>
 
-                        <p-editor formControlName="content" [style]="{ height: '320px' }">
+                        <!-- Editor do conteúdo -->
+                        <p-editor formControlName="content" [style]="{ height: '340px' }">
                             <ng-template pTemplate="header">
                                 <span class="ql-formats">
                                     <button type="button" class="ql-bold" aria-label="Bold"></button>
@@ -42,7 +43,7 @@
 
 
 
-                        <button type="submit" class="btn btn-primary" (click)="handleClick()">Enviar</button> 
+                        <button type="submit" class="btn btn-light" (click)="handleClick()">Enviar</button> 
                     </form>
                 </div>
             </div>
