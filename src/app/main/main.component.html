@@ -89,9 +89,10 @@
                                 </span>
                             </ng-template>
                         </p-editor>
-                       
+                        
 
-                        <button type="submit" class="send btn btn-light" (click)="handleClick()" >Enviar</button> 
+     
+                        <button type="submit" class="send btn btn-light" (click)="handleClick()" [disabled]="!form.enable" >Enviar</button> 
                     </form>
                 </div>
             </div>

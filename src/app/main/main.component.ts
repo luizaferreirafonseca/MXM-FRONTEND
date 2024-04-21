@@ -40,8 +40,9 @@ export class MainComponent {
 
     
 
-    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination) {
+    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination && this.form.valid) {
 
+      this.form.valid
       
       let html = this.form.value.body;
 
@@ -112,7 +113,6 @@ ${html}
       this.MessageService.enviarMensagem(message).subscribe(
         {
           next: res => {
-            console.log(res.Message);
             const SuccessModal = new bootstrap.Modal(this.successModal.nativeElement);
             SuccessModal.show();
           },
