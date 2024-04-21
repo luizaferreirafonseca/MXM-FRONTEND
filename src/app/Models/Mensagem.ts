@@ -1,7 +1,5 @@
 export interface Mensagem {
-    email:string; 
-    nome:string; 
-    conteudo: string;
+    name:string;
+    adressDestination:string;
+    body: string;
 }
-
-

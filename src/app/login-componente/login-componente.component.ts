@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderLoginComponent } from '../header-login/header-login.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-componente',
@@ -10,4 +11,9 @@ import { HeaderLoginComponent } from '../header-login/header-login.component';
 })
 export class LoginComponenteComponent {
 
+  formulario = new FormGroup({
+    name: new FormControl(''),
+    password: new FormControl('')
+  })
+  
 }

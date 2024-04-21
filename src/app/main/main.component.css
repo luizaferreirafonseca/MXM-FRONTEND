@@ -4,6 +4,8 @@
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -14,11 +16,12 @@
 
 .form-container{
     background-color: var(--orange);
-    height: 70vh; 
     padding: 20px;
     border-radius: 10px;
 
 }
+
+
 
 .content-form{
     gap: 15px;
@@ -42,5 +45,37 @@
 
 .table-head tr th{
     color: var(--dark-blue);
+    font-weight: 500;
 }
 
+
+
+button{
+    margin-top: 8px;
+}
+
+.container2{
+    margin-left:  6%;
+}
+
+.form-control{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+}
+
+label{
+    padding-bottom: 3px;
+}
+
+.send{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.messages{
+    color: white;
+    font-size: 0.8rem;
+    padding-top: 5px;
+    padding-left: 3px;
+}
