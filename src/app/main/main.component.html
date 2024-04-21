@@ -21,6 +21,9 @@
                             @if (form.get('name')?.hasError('minlength') && form.get('name')?.touched) {
                                 <p class="messages">O campo nome precisa conter pelo menos 3 caracteres.</p>
                             }
+                            @if (form.get('name')?.hasError('pattern') && form.get('name')?.touched){
+                                <p class="messages">O campo nome precisa ter somente letras.</p>
+                            }
                         </div>
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">E-mail do(a) responsável</label>
@@ -88,7 +91,7 @@
                         </p-editor>
                        
 
-                        <button type="submit" class="send btn btn-light" (click)="handleClick()" >Enviar</button> 
+                        <button type="submit" class="send btn btn-light" (click)="handleClick()"[disabled]="form.invalid" >Enviar</button> 
                     </form>
                 </div>
             </div>

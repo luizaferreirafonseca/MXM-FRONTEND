@@ -29,7 +29,7 @@ export class MainComponent {
 
   form = new FormGroup({
 
-    name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-ZÀ-ú ]+$'), Validators.maxLength(100)]),
     adressDestination: new FormControl('', [Validators.required, Validators.email]),
     body: new FormControl('', [Validators.required])
   })
