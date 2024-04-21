@@ -40,7 +40,7 @@ export class MainComponent {
 
     
 
-    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination) {
+    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination && this.form.valid) {
 
       this.form.valid
 
@@ -113,7 +113,6 @@ ${html}
       this.MessageService.enviarMensagem(message).subscribe(
         {
           next: res => {
-            
             const SuccessModal = new bootstrap.Modal(this.successModal.nativeElement);
             SuccessModal.show();
           },
