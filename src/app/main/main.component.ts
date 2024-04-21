@@ -43,7 +43,7 @@ export class MainComponent {
     if (this.form.value.body && this.form.value.name && this.form.value.adressDestination && this.form.valid) {
 
       this.form.valid
-      
+
       let html = this.form.value.body;
 
       html = html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
