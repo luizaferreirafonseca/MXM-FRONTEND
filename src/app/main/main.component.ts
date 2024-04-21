@@ -8,7 +8,8 @@ import { ServicoMensagemService } from '../services/servico-mensagem.service';
 import { Mensagem } from '../Models/Mensagem';
 import * as bootstrap from 'bootstrap';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { catchError, throwError } from 'rxjs';
+import { inappropriateWordsValidator } from '../Validator/ckeckInappropriateWords';
+
 
 
 
@@ -31,7 +32,7 @@ export class MainComponent {
 
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-ZÀ-ú ]+$'), Validators.maxLength(100)]),
     adressDestination: new FormControl('', [Validators.required, Validators.email]),
-    body: new FormControl('', [Validators.required])
+    body: new FormControl('', [Validators.required, inappropriateWordsValidator()])
   })
 
 
