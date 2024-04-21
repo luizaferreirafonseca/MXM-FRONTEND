@@ -1,103 +1,164 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
+import { ServicoMensagemService } from '../services/servico-mensagem.service';
+import { Mensagem } from '../Models/Mensagem';
+import * as bootstrap from 'bootstrap';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FooterComponent, ReactiveFormsModule, EditorModule],
+  imports: [CommonModule, NavbarComponent, FooterComponent, ReactiveFormsModule, EditorModule, RouterLink, RouterOutlet],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent {
 
-  constructor(){}
+  constructor(private MessageService: ServicoMensagemService) { }
 
+  erroMessage: string | null = '';
+  @ViewChild('errorModal') errorModal!: ElementRef;
+  @ViewChild('successModal') successModal!: ElementRef;
 
   form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
-      content: new FormControl('', [Validators.required])
+
+    name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    adressDestination: new FormControl('', [Validators.required, Validators.email]),
+    body: new FormControl('', [Validators.required])
   })
 
-  
+
   handleClick() {
 
-    if(this.form.value.content){
-   
-     let html = this.form.value.content;
-   
-     // Substituindo text-align class para inline style
     
 
-     html = html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-      return `style="text-align: ${p1};">${p2}</p>`;
+    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination) {
+
+      
+      let html = this.form.value.body;
+
+      html = html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+        return `style="text-align: ${p1};">${p2}</p>`;
       });
-  
-   
-     // Substituindo font-size class para inline style 
-    
 
-    html = html.replace(/class="ql-size-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-      let fontSize: string = '';
-      switch (p1) {
+      html = html.replace(/class="ql-size-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+        let fontSize: string = '';
+        switch (p1) {
           case 'small':
-              fontSize = '0.75em';
-              break;
+            fontSize = '0.75em';
+            break;
           case 'normal':
-              fontSize = '1em';
-              break;
+            fontSize = '1em';
+            break;
           case 'large':
-              fontSize = '1.5em';
-              break;
+            fontSize = '1.5em';
+            break;
           case 'huge':
-              fontSize = '2.5em';
-              break;
+            fontSize = '2.5em';
+            break;
           default:
-              break;
-      }
-      return `style="font-size: ${fontSize};">${p2}</p>`;
-    });
-  
-   
-     // Adiciona font-size a um estilo existente/ou cria 
+            break;
+        }
+        return `style="font-size: ${fontSize};">${p2}</p>`;
+      });
 
 
-    html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-      let style: string = p1;
-      if (!style.includes('font-size')) {
+      html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+        let style: string = p1;
+        if (!style.includes('font-size')) {
           style += ` font-size: 1em;`;
-      }
-      return `style="${style}">${p2}</p>`;
-    });
-  
+        }
+        return `style="${style}">${p2}</p>`;
+      });
 
-   
-     // Adiciona text-align a um style existente ou cria um novo 
-  
-    html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-      let style: string = p1;
-      if (!style.includes('text-align')) {
+      html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+        let style: string = p1;
+        if (!style.includes('text-align')) {
           style += ` text-align: left;`;
-      }
-      return `style="${style}">${p2}</p>`;
-    });
-  
-   
-   
-     const objeto = {
-       email: this.form.value.email,
-       name: this.form.value.name,
-       content: html
-     }
-   
-     console.log(objeto)
+        }
+        return `style="${style}">${p2}</p>`;
+      });
+
+      let body = ` <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+
+${html}
+  </body>
+
+  </html>
+`
+      
+      const message: Mensagem = {
+        name: this.form.value.name,
+        adressDestination: this.form.value.adressDestination,
+        body: body
+      };
+
+      this.MessageService.enviarMensagem(message).subscribe(
+        {
+          next: res => {
+            console.log(res.Message);
+            const SuccessModal = new bootstrap.Modal(this.successModal.nativeElement);
+            SuccessModal.show();
+          },
+          error: err => {
+            const ErrorModal = new bootstrap.Modal(this.errorModal.nativeElement);
+            ErrorModal.show();
+          
+          }
+
+
+        }
+      )
+
+
+
     }
-   
-   }
+  }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

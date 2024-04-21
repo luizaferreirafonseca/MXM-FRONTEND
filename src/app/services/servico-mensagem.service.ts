@@ -8,13 +8,24 @@ import { Observable } from 'rxjs';
 })
 export class ServicoMensagemService {
 
-  private url:string = ''
+  private url:string = 'https://localhost:7081/mxm-api/SendEmail';
 
   constructor(private http:HttpClient) { }
 
+
   enviarMensagem(mensagem: Mensagem): Observable<any> {
-    return this.http.post<any>(this.url, mensagem);
+    return this.http.post(this.url, mensagem).pipe(
+      res => res,
+      error => error
+    )
   }
+
+
+
+
+
+  
+  
 
 }
 
