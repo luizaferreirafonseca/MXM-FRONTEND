@@ -1,12 +1,16 @@
 <app-navbar></app-navbar>
 
+
+
+
 <div class="container mt-4 mb-5">
     
     <div class="container2 row d-flex flex-column">
-        <div class="container1 col-lg-8 d-flex flex-column">
+        <div class="container1 col-lg-8 d-flex flex-column justify-content-center">
             <div class="note pt-5">
-                <h2 class="fs-2">Gerenciador de comunicados </h2>
-                <p class="text">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com todos os responsáveis dos alunos de nossa escola.</p>
+                <h2 class="fs-2">Gerenciador de comunicados</h2>
+                <p class="text">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com
+                    todos os responsáveis dos alunos de nossa escola.</p>
             </div>
             <div class="content-form d-flex flex-column">
                 <h2 class="fs-5">Insira os dados necessários para envio</h2>
@@ -14,26 +18,30 @@
                     <form [formGroup]="form" class="d-flex flex-column">
                         <div class="mb-3">
                             <label for="inputNome" class="form-label">Nome do(a) responsável</label>
-                            
-                            <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome" formControlName="name">
+
+                            <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome"
+                                formControlName="name">
                             @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
-                                <p class="messages">O campo nome é obrigatório.</p>
+                            <p class="messages">O campo nome é obrigatório.</p>
                             }
                             @if (form.get('name')?.hasError('minlength') && form.get('name')?.touched) {
-                                <p class="messages">O campo nome precisa conter pelo menos 3 caracteres.</p>
+                            <p class="messages">O campo nome precisa conter pelo menos 3 caracteres.</p>
                             }
                             @if (form.get('name')?.hasError('pattern') && form.get('name')?.touched){
-                                <p class="messages">O campo nome precisa ter somente letras.</p>
+                            <p class="messages">O campo nome precisa ter somente letras.</p>
                             }
                         </div>
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">E-mail do(a) responsável</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Insira o e-mail" formControlName="adressDestination">
-                            @if(form.get('adressDestination')?.hasError('required') && form.get('adressDestination')?.touched){
-                                <p class="messages">O campo e-mail é obrigatório.</p>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Insira o e-mail"
+                                formControlName="adressDestination">
+                            @if(form.get('adressDestination')?.hasError('required') &&
+                            form.get('adressDestination')?.touched){
+                            <p class="messages">O campo e-mail é obrigatório.</p>
                             }
-                            @if (form.get('adressDestination')?.hasError('email') && form.get('adressDestination')?.touched) {
-                                <p class="messages">O campo email precisa conter pelo menos 3 caracteres.</p>
+                            @if (form.get('adressDestination')?.hasError('email') &&
+                            form.get('adressDestination')?.touched) {
+                            <p class="messages">O campo email está inválido.</p>
                             }
 
 
@@ -41,40 +49,9 @@
 
 
 
-                        <div class="modal fade" #errorModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content modal-centered">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div  class="modal-body">
-                                        <p>Erro ao enviar a sua mensagem.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="custom-btn" data-bs-dismiss="modal" [disabled]="form.invalid">Fechar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="modal fade" #successModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content modal-centered">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sucesso!</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Mensagem enviada com sucesso</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="custom-btn btn" data-bs-dismiss="modal">Fechar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+
+
 
                         <!-- Editor do conteúdo -->
                         <p-editor formControlName="body" [style]="{ height: '220px' }">
@@ -85,7 +62,7 @@
                                     <button type="button" class="ql-underline" aria-label="Underline"></button>
                                     <select class="ql-align" #alignSelect>
                                     </select>
-                                    <select class="ql-size" #fontSizeSelect >
+                                    <select class="ql-size" #fontSizeSelect>
                                     </select>
                                 </span>
                             </ng-template>
@@ -93,6 +70,45 @@
 
                         <button type="submit" class="send btn btn-light" (click)="handleClick()" [disabled]="!form.enable" >Enviar</button> 
                     </form>
+
+
+                    <div class="modal fade"   #errorModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Erro ao enviar a sua mensagem.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="custom-btn" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade "  #successModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Mensagem enviada com sucesso</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,8 +9,6 @@ import { Mensagem } from '../Models/Mensagem';
 import * as bootstrap from 'bootstrap';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { inappropriateWordsValidator } from '../Validator/ckeckInappropriateWords';
-import { SessionStorageService } from '../services/session-storage.service';
-import { UserLogged } from '../Models/UserLogged';
 
 
 
@@ -22,19 +20,13 @@ import { UserLogged } from '../Models/UserLogged';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent{
-
+export class MainComponent {
 
   constructor(private MessageService: ServicoMensagemService) { }
-
-
 
   erroMessage: string | null = '';
   @ViewChild('errorModal') errorModal!: ElementRef;
   @ViewChild('successModal') successModal!: ElementRef;
-
-
-
 
   form = new FormGroup({
 
@@ -48,10 +40,10 @@ export class MainComponent{
 
     
 
-    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination) {
+    if (this.form.value.body && this.form.value.name && this.form.value.adressDestination && this.form.valid) {
 
-      
-      
+      this.form.valid
+
       let html = this.form.value.body;
 
       html = html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
