@@ -3,8 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { TokenServiceService } from './services/token-service.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(withFetch()), provideClientHydration()]
+  providers: [provideRouter(routes), provideHttpClient(withFetch()), 
+    provideHttpClient(withInterceptorsFromDi()), HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, 
+    provideClientHydration()]
 };

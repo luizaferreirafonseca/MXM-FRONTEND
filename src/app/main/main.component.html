@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-4 mb-5">
+    
     <div class="container2 row d-flex flex-column">
         <div class="container1 col-lg-8 d-flex flex-column">
             <div class="note pt-5">
-                <h2 class="fs-2">Gerenciador de comunicados</h2>
+                <h2 class="fs-2">Gerenciador de comunicados </h2>
                 <p class="text">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com todos os responsáveis dos alunos de nossa escola.</p>
             </div>
             <div class="content-form d-flex flex-column">
@@ -42,7 +43,7 @@
 
                         <div class="modal fade" #errorModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content modal-centered">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -59,9 +60,9 @@
 
                         <div class="modal fade" #successModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content modal-centered">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sucesso!</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -89,9 +90,7 @@
                                 </span>
                             </ng-template>
                         </p-editor>
-                        
 
-     
                         <button type="submit" class="send btn btn-light" (click)="handleClick()" [disabled]="!form.enable" >Enviar</button> 
                     </form>
                 </div>
