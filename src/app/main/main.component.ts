@@ -115,6 +115,7 @@ ${html}
           next: res => {
             const SuccessModal = new bootstrap.Modal(this.successModal.nativeElement);
             SuccessModal.show();
+            this.form.reset();
           },
           error: err => {
             const ErrorModal = new bootstrap.Modal(this.errorModal.nativeElement);
@@ -123,8 +124,7 @@ ${html}
           }
 
 
-        }
-      )
+        });
 
 
 
