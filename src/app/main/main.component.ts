@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,6 +9,8 @@ import { Mensagem } from '../Models/Mensagem';
 import * as bootstrap from 'bootstrap';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { inappropriateWordsValidator } from '../Validator/ckeckInappropriateWords';
+import { UserLogged } from '../Models/UserLogged';
+import { SessionStorageService } from '../services/session-storage.service';
 
 
 
@@ -20,13 +22,19 @@ import { inappropriateWordsValidator } from '../Validator/ckeckInappropriateWord
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent {
+export class MainComponent  {
 
-  constructor(private MessageService: ServicoMensagemService) { }
+  constructor(private MessageService: ServicoMensagemService, private sessionStorageService: SessionStorageService) { }
 
+  user!: UserLogged;
   erroMessage: string | null = '';
   @ViewChild('errorModal') errorModal!: ElementRef;
   @ViewChild('successModal') successModal!: ElementRef;
+
+  ngOnInit(){
+    const user = this.sessionStorageService.getLoggedUser();
+    this.user = user;
+  }
 
   form = new FormGroup({
 

@@ -1,7 +1,7 @@
 export interface UserLogged {
-    Id:  string;
-    FirstName: string;
-    LastName: string;
-    Email: string;
+    id:  string;
+    firstName: string;
+    lastName: string;
+    email: string;
     token: string;
 }
