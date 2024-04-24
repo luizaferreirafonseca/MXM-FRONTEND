@@ -39,9 +39,9 @@
               "node_modules/quill/dist/quill.js"
             ],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": false,
             "ssr": {
-              "entry": "server.ts"
+             
             }
           },
           "configurations": {
