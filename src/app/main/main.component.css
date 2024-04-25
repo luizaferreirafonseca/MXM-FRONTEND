@@ -88,6 +88,11 @@ label{
     padding-bottom: 2px;
 }
 
+.title-gerenciador{
+    font-size: 1.8rem;
+}
+
+
 .messages{
     color: white;
     font-size: 0.8rem;
@@ -95,3 +100,25 @@ label{
     padding-left: 3px;
 }
 
+@media screen and (max-width: 576px) {
+   .container2{
+    margin-left: 40px;
+    margin-right: 40px;
+    
+   }
+  }
+
+
+  @media (max-width: 449px){
+    
+    
+    .title-gerenciador{
+        font-size: 1.5rem;
+    }
+
+    .text{
+        font-size: 0.9rem;
+    }
+    
+    
+    }
