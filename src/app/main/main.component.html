@@ -1,10 +1,9 @@
 <app-navbar></app-navbar>
-
-
-
-
 <div class="container mt-4 mb-5">
+    <p class="hello pt-3"> <span class="pi pi-user"></span>Olá, {{user.firstName}}!</p>
     <div class="container2 row d-flex flex-column">
+        
+        
         <div class="container1 col-lg-8 d-flex flex-column justify-content-center">
             <div class="note pt-5">
                 <h2 class="fs-2">Gerenciador de comunicados</h2>
@@ -46,12 +45,6 @@
 
                         </div>
 
-
-
-
-
-
-                        <!-- Editor do conteúdo -->
                         <p-editor formControlName="body" [style]="{ height: '220px' }">
                             <ng-template pTemplate="header">
                                 <span class="ql-formats">
@@ -80,26 +73,30 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Erro ao enviar a sua mensagem.</p>
+                                    <p>Ocorreu um erro ao enviar a sua mensagem.</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="custom-btn" data-bs-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                   
 
-                    <div class="modal fade "  #successModal tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
+
+                    
+
+                    <div class="modal fade ms-5 " #successModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                        >
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content ">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sucesso</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Mensagem enviada com sucesso</p>
+                                    <p>Mensagem enviada com sucesso!</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -128,9 +125,9 @@
                             <td>Gerente de RH</td>
                         </tr>
                         <tr>
-                            <td>Maria Oliveira</td>
-                            <td>maria&#64;escolacooper.com</td>
-                            <td>Secretária Pedagógica</td>
+                            <td>Ana Fernandez</td>
+                            <td>ana&#64;escolacooper.com</td>
+                            <td>Assistente de Coordenação</td>
                         </tr>
                         <tr>
                             <td>Lia Queiroz</td>
@@ -143,6 +140,7 @@
         </div>
     </div>
 </div>
+
 
 
 <app-footer></app-footer>

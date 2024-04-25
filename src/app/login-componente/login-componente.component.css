@@ -9,7 +9,7 @@
   }
 
   .total-content{
-    height: 100vh;
+    height: 90vh;
     background-color: var(--light-blue);
   }
 
@@ -25,6 +25,10 @@
 
   form{
     gap: 20px;
+  }
+
+  form p{
+    color: var(--orange);
   }
 
   .btn{

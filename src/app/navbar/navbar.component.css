@@ -31,9 +31,25 @@ header {
     display: flex;
 }
 
-.links p {
+.links li {
     padding: 0 20px;
+    cursor: pointer;
 }
+
+.links li:hover{
+    color: var(--orange);
+        
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+}
+
+li a:hover{
+    color: var(--orange);
+}
+
 
 /* Media query para telas menores */
 @media (max-width: 767px) {
@@ -49,7 +65,7 @@ header {
         gap: 20px;
     }
 
-    .links p {
+    .links li {
         padding: 10px 0;
     }
 }
