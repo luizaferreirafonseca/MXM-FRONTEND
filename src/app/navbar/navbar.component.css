@@ -67,5 +67,21 @@ li a:hover{
 
     .links li {
         padding: 10px 0;
+
     }
+}
+
+
+@media (max-width: 415px){
+.links li{
+    font-size: 0.8rem;
+}
+
+.navbar-container{
+    font-size: 0.9rem;
+}
+
+
+
+
 }
