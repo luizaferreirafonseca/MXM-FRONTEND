@@ -10,6 +10,8 @@ export class ServicoMensagemService {
 
   private url:string = 'https://localhost:7081/mxm-api/SendEmail';
 
+  
+
   constructor(private http:HttpClient) { }
 
 
