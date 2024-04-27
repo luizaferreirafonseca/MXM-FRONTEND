@@ -3,7 +3,7 @@ import { HeaderLoginComponent } from '../header-login/header-login.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthServico } from '../servicos/auth.service';
 import { SessionStorageServico } from '../servicos/session-storage-servico';
-import { Login } from '../Modelos/Login';
+import { Login } from '../modelos/Login';
 import { Router } from '@angular/router';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';

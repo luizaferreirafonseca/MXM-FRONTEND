@@ -5,12 +5,12 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
 import { ServicoMensagemServico } from '../servicos/servico-mensagem.servico';
-import { Mensagem } from '../Modelos/Mensagem';
+import { Mensagem } from '../modelos/Mensagem';
 import * as bootstrap from 'bootstrap';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UsuarioLogado } from '../Modelos/UsuarioLogado';
+import { UsuarioLogado } from '../modelos/UsuarioLogado';
 import { SessionStorageServico } from '../servicos/session-storage-servico';
-import { palavrasinapropriadasValidator } from '../Validator/checkPalavrasInapropriadas';
+import { palavrasinapropriadasValidator } from '../validator/checkPalavrasInapropriadas';
 
 
 
@@ -44,108 +44,85 @@ export class MainComponent  {
   })
 
 
+
   enviarFormulario() {
-
-    
-
-    if (this.formulario.value.corpo && this.formulario.value.nome && this.formulario.value.enderecoDestino && this.formulario.valid) {
-
-      this.formulario.valid
-
-      let html = this.formulario.value.corpo;
-
-      html = html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-        return `style="text-align: ${p1};">${p2}</p>`;
-      });
-
-      html = html.replace(/class="ql-size-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-        let tamanhoFonte: string = '';
-        switch (p1) {
-          case 'small':
-            tamanhoFonte = '0.75em';
-            break;
-          case 'normal':
-            tamanhoFonte = '1em';
-            break;
-          case 'large':
-            tamanhoFonte = '1.5em';
-            break;
-          case 'huge':
-            tamanhoFonte = '2.5em';
-            break;
-          default:
-            break;
-        }
-        return `style="font-size: ${tamanhoFonte};">${p2}</p>`;
-      });
-
-
-      html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-        let estilo: string = p1;
-        if (!estilo.includes('font-size')) {
-          estilo += ` font-size: 1em;`;
-        }
-        return `style="${estilo}">${p2}</p>`;
-      });
-
-      html = html.replace(/style="(.*?)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
-        let estilo: string = p1;
-        if (!estilo.includes('text-align')) {
-          estilo += ` text-align: left;`;
-        }
-        return `style="${estilo}">${p2}</p>`;
-      });
-
-      let corpo = ` <!DOCTYPE html>
-  <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-
-${html}
-  </body>
-
-  </html>
-`
-      
-      const message: Mensagem = {
-        nome: this.formulario.value.nome,
-        enderecoDestino: this.formulario.value.enderecoDestino,
-        corpo: corpo
+    if (this.formulario.valid) {
+      const corpoHTML = this.construirCorpoHTML();
+      const mensagem: Mensagem = {
+        nome: this.formulario.value.nome || '',
+        enderecoDestino: this.formulario.value.enderecoDestino || '',
+        corpo: corpoHTML
       };
 
-      this.ServicoMensagem.enviarMensagem(message).subscribe(
-        {
-          next: res => {
-            const sucessoModal = new bootstrap.Modal(this.sucessoModal.nativeElement);
-            sucessoModal.show();
-            this.formulario.reset();
-          },
-          error: err => {
-            const erroModal = new bootstrap.Modal(this.erroModal.nativeElement);
-            erroModal.show();
-          
-          }
-
-
-        });
-
-
-
+      this.ServicoMensagem.enviarMensagem(mensagem).subscribe({
+        next: () => {
+          const sucessoModal = new bootstrap.Modal(this.sucessoModal.nativeElement);
+          sucessoModal.show();
+          this.formulario.reset();
+        },
+        error: () => {
+          const erroModal = new bootstrap.Modal(this.erroModal.nativeElement);
+          erroModal.show();
+        }
+      });
+    } else {
+      const erroModal = new bootstrap.Modal(this.erroModal.nativeElement);
+      erroModal.show();
     }
+  }
+
+   construirCorpoHTML(): string {
+    let html = this.formulario.value.corpo || '';
+    html = this.transformarAlinhamento(html);
+    html = this.transformarTamanhoFonte(html);
+    return this.construirDocumentoHTML(html);
+  }
+
+   transformarAlinhamento(html: string): string {
+    return html.replace(/class="ql-align-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+      return `style="text-align: ${p1};">${p2}</p>`;
+    });
+  }
+
+  transformarTamanhoFonte(html: string): string {
+    return html.replace(/class="ql-size-(\w+)">([\s\S]*?)<\/p>/g, (match: string, p1: string, p2: string) => {
+      const tamanhoFonte = this.obterTamanhoFonte(p1);
+      return `style="font-size: ${tamanhoFonte};">${p2}</p>`;
+    });
+  }
+
+   obterTamanhoFonte(classe: string): string {
+    switch (classe) {
+      case 'small':
+        return '0.75em';
+      case 'normal':
+        return '1em';
+      case 'large':
+        return '1.5em';
+      case 'huge':
+        return '2.5em';
+      default:
+        return '1em';
+    }
+  }
+
+  construirDocumentoHTML(html: string): string {
+    return `<!DOCTYPE html>
+      <html lang="pt-BR">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+      </head>
+      <body>
+        ${html}
+      </body>
+      </html>`;
   }
 
 
 }
-
-
-
-
-
 
 
 

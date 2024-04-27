@@ -18,24 +18,24 @@
                             <label for="inputNome" class="form-label">Nome do(a) responsável</label>
 
                             <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome"
-                                formControlName="nome">
+                                formControlName="nome" required>
                             @if(formulario.get('nome')?.hasError('required') && formulario.get('nome')?.touched){
-                            <p class="menssagem">O campo nome é obrigatório.</p>
+                            <p class="mensagem">O campo nome é obrigatório.</p>
                             }
                             @if (formulario.get('nome')?.hasError('minlength') && formulario.get('nome')?.touched) {
-                            <p class="menssagem">O campo nome precisa conter pelo menos 3 caracteres.</p>
+                            <p class="mensagem">O campo nome precisa conter pelo menos 3 caracteres.</p>
                             }
                             @if (formulario.get('nome')?.hasError('pattern') && formulario.get('nome')?.touched){
-                            <p class="menssagem">O campo nome precisa ter somente letras.</p>
+                            <p class="mensagem">O campo nome precisa ter somente letras.</p>
                             }
                         </div>
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">E-mail do(a) responsável</label>
                             <input type="email" class="form-control" id="inputEmail" placeholder="Insira o e-mail"
-                                formControlName="enderecoDestino">
+                                formControlName="enderecoDestino" required>
                             @if(formulario.get('enderecoDestino')?.hasError('required') &&
                             formulario.get('enderecoDestino')?.touched){
-                            <p class="messages">O campo e-mail é obrigatório.</p>
+                            <p class="mensagem">O campo e-mail é obrigatório.</p>
                             }
                             @if (formulario.get('enderecoDestino')?.hasError('email') &&
                             formulario.get('enderecoDestino')?.touched) {
@@ -45,7 +45,7 @@
 
                         </div>
 
-                        <p-editor formControlName="corpo" [style]="{ height: '220px' }">
+                        <p-editor formControlName="corpo" [style]="{ height: '220px' }" required>
                             <ng-template pTemplate="header">
                                 <span class="ql-formats">
                                     <button type="button" class="ql-bold" aria-label="Bold"></button>
@@ -63,9 +63,9 @@
                     </form>
 
 
-                    <div class="modal fade"   #erroModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade ms-5"  role="dialog"  #erroModal tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Erro</h1>
@@ -73,7 +73,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ocorreu um erro ao enviar a sua mensagem.</p>
+                                    <p>Preencha todos os campos.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
