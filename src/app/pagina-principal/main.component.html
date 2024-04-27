@@ -1,51 +1,51 @@
 <app-navbar></app-navbar>
 <div class="container mt-4 mb-5">
-    <p class="hello pt-3"> <span class="pi pi-user"></span>Olá, {{user.firstName}}!</p>
+    <p class="saudacao pt-3"> <span class="pi pi-user"></span>Olá, {{usuario.primeiroNome}}!</p>
     <div class="container2 row d-flex flex-column">
         
         
         <div class="container1 col-lg-8 d-flex flex-column justify-content-center">
-            <div class="note pt-5">
-                <h2 class="title-gerenciador">Gerenciador de comunicados</h2>
-                <p class="text">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com
+            <div class="nota pt-5">
+                <h2 class="gerenciador-titulo">Gerenciador de comunicados</h2>
+                <p class="texto">Nesta seção restrita, você tem a capacidade de se comunicar de forma eficaz e direta com
                     todos os responsáveis dos alunos de nossa escola.</p>
             </div>
             <div class="content-form d-flex flex-column">
                 <h2 class="fs-5">Insira os dados necessários para envio</h2>
                 <div class="form-container">
-                    <form [formGroup]="form" class="d-flex flex-column">
+                    <form [formGroup]="formulario" class="d-flex flex-column">
                         <div class="mb-3">
                             <label for="inputNome" class="form-label">Nome do(a) responsável</label>
 
                             <input type="text" class="form-control" id="inputNome" placeholder="Insira o nome"
-                                formControlName="name">
-                            @if(form.get('name')?.hasError('required') && form.get('name')?.touched){
-                            <p class="messages">O campo nome é obrigatório.</p>
+                                formControlName="nome">
+                            @if(formulario.get('nome')?.hasError('required') && formulario.get('nome')?.touched){
+                            <p class="menssagem">O campo nome é obrigatório.</p>
                             }
-                            @if (form.get('name')?.hasError('minlength') && form.get('name')?.touched) {
-                            <p class="messages">O campo nome precisa conter pelo menos 3 caracteres.</p>
+                            @if (formulario.get('nome')?.hasError('minlength') && formulario.get('nome')?.touched) {
+                            <p class="menssagem">O campo nome precisa conter pelo menos 3 caracteres.</p>
                             }
-                            @if (form.get('name')?.hasError('pattern') && form.get('name')?.touched){
-                            <p class="messages">O campo nome precisa ter somente letras.</p>
+                            @if (formulario.get('nome')?.hasError('pattern') && formulario.get('nome')?.touched){
+                            <p class="menssagem">O campo nome precisa ter somente letras.</p>
                             }
                         </div>
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">E-mail do(a) responsável</label>
                             <input type="email" class="form-control" id="inputEmail" placeholder="Insira o e-mail"
-                                formControlName="adressDestination">
-                            @if(form.get('adressDestination')?.hasError('required') &&
-                            form.get('adressDestination')?.touched){
+                                formControlName="enderecoDestino">
+                            @if(formulario.get('enderecoDestino')?.hasError('required') &&
+                            formulario.get('enderecoDestino')?.touched){
                             <p class="messages">O campo e-mail é obrigatório.</p>
                             }
-                            @if (form.get('adressDestination')?.hasError('email') &&
-                            form.get('adressDestination')?.touched) {
-                            <p class="messages">O campo email está inválido.</p>
+                            @if (formulario.get('enderecoDestino')?.hasError('email') &&
+                            formulario.get('enderecoDestino')?.touched) {
+                            <p class="mensagem">O campo email está inválido.</p>
                             }
 
 
                         </div>
 
-                        <p-editor formControlName="body" [style]="{ height: '220px' }">
+                        <p-editor formControlName="corpo" [style]="{ height: '220px' }">
                             <ng-template pTemplate="header">
                                 <span class="ql-formats">
                                     <button type="button" class="ql-bold" aria-label="Bold"></button>
@@ -59,11 +59,11 @@
                             </ng-template>
                         </p-editor>
 
-                        <button type="submit" class="send btn btn-light" (click)="handleClick()" [disabled]="!form.enable" >Enviar</button> 
+                        <button type="submit" class="enviar-botao btn btn-light" (click)="enviarFormulario()" [disabled]="!formulario.enable" >Enviar</button> 
                     </form>
 
 
-                    <div class="modal fade"   #errorModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade"   #erroModal tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -86,7 +86,7 @@
 
                     
 
-                    <div class="modal fade ms-5 " #successModal tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade ms-5 " #sucessoModal tabindex="-1" aria-labelledby="exampleModalLabel"
                         >
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content ">
@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="container-table col-lg-8">
-            <h2 class="title mb-4 fs-4">Colaboradores com acesso</h2>
+            <h2 class="titulo mb-4 fs-4">Colaboradores com acesso</h2>
             <div class="table-responsive">
                 <table class="table">
                     <thead class="table-head">

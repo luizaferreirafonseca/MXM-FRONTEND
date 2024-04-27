@@ -26,15 +26,15 @@
 
 }
 
-.hello{
+.saudacao{
     padding-left: 80px;
 }
 
-.hello  {
+.saudacao  {
     text-decoration: underline;
 }
 
-.hello .pi {
+.saudacao .pi {
     margin-right: 6px; /* Ajuste o valor conforme necessário */
 }
 
@@ -49,12 +49,12 @@
 
 }
 
-.note h2{
+.nota h2{
     color: rgb(73, 73, 73);
 }
 
 
-.title{
+.titulo{
     color: rgb(3, 3, 53);
 }
 
@@ -83,17 +83,17 @@ label{
     padding-bottom: 3px;
 }
 
-.send{
+.enviar-botao{
     padding-top: 2px;
     padding-bottom: 2px;
 }
 
-.title-gerenciador{
+.gerenciador-titulo{
     font-size: 1.8rem;
 }
 
 
-.messages{
+.mensagem{
     color: white;
     font-size: 0.8rem;
     padding-top: 5px;
@@ -112,11 +112,11 @@ label{
   @media (max-width: 449px){
     
     
-    .title-gerenciador{
+    .gerenciador-titulo{
         font-size: 1.5rem;
     }
 
-    .text{
+    .texto{
         font-size: 0.9rem;
     }
     

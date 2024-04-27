@@ -1,7 +1,7 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SessionStorageService } from './session-storage.service';
+import { SessionStorageServico } from './session-storage-servico';
 
 
 @Injectable({
@@ -9,19 +9,19 @@ import { SessionStorageService } from './session-storage.service';
 })
 export class TokenServiceService implements HttpInterceptor {
 
-  constructor(private SessionStorageService: SessionStorageService) { }
+  constructor(private SessionStorageServico: SessionStorageServico) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>>{
-    const userToken = this.SessionStorageService.getLoggedUser()?.token;
+    const usuarioToken = this.SessionStorageServico.pegarUsuarioLogado()?.token;
 
-    if(userToken){
-      const modifiedReq = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${userToken}`),
+    if(usuarioToken){
+      const modificadaReq = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${usuarioToken}`),
       });
-      return next.handle(modifiedReq);
+      return next.handle(modificadaReq);
     }
     return next.handle(req);
   }
