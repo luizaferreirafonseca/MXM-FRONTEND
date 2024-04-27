@@ -5,12 +5,12 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
 import { ServicoMensagemServico } from '../servicos/servico-mensagem.servico';
-import { Mensagem } from '../modelos/Mensagem';
+import { Mensagem } from '../Modelos/Mensagem';
 import * as bootstrap from 'bootstrap';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UsuarioLogado } from '../modelos/UsuarioLogado';
+import { UsuarioLogado } from '../Modelos/UsuarioLogado';
 import { SessionStorageServico } from '../servicos/session-storage-servico';
-import { palavrasinapropriadasValidator } from '../validator/checkPalavrasInapropriadas';
+import { palavrasinapropriadasValidator } from '../Validator/checkPalavrasInapropriadas';
 
 
 
