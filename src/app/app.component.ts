@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './pagina-principal/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponenteComponent } from './login-componente/login-componente.component';
+import { LoginComponenteComponent } from './login/login-componente.component';
 
 @Component({
   selector: 'app-root',

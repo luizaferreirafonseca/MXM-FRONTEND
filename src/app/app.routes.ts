@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponenteComponent } from './login-componente/login-componente.component';
-import { MainComponent } from './main/main.component';
-import { authGuardGuard } from './Auth-guard/auth-guard.guard';
+import { LoginComponenteComponent } from './login/login-componente.component';
+import { MainComponent } from './pagina-principal/main.component';
+import { authGuardGuard } from './auth-guard/auth-guard.guard';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -10,7 +11,7 @@ export const routes: Routes = [
       component: LoginComponenteComponent,
     },
     {
-      path: 'main',
+      path: 'pagina-principal',
       component: MainComponent, canActivate: [authGuardGuard]
     },
 ];

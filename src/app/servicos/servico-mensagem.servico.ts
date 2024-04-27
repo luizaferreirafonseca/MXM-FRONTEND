@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Mensagem } from '../Models/Mensagem';
+import { Mensagem } from '../Modelos/Mensagem';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServicoMensagemService {
+export class ServicoMensagemServico {
 
-  private url:string = 'https://localhost:7081/mxm-api/SendEmail';
+  private url:string = 'https://api-mxm-alm.azurewebsites.net/api/SendEmail/send';
 
   
 

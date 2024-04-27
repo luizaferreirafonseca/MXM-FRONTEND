@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { SessionStorageService } from '../services/session-storage.service';
+import { SessionStorageServico } from '../servicos/session-storage-servico';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private sessionStorageService: SessionStorageService, private Router: Router){}
+  constructor(private sessionStorageServico: SessionStorageServico, private Router: Router){}
 
 
   logout(){
-    this.sessionStorageService.logout();
+    this.sessionStorageServico.logout();
     this.Router.navigate(['/login'])
 
   }

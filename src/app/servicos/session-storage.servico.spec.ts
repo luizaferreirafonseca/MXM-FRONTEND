@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SessionStorageService } from './session-storage.service';
+import { SessionStorageServico } from './session-storage-servico';
 
 describe('SessionStorageService', () => {
-  let service: SessionStorageService;
+  let service: SessionStorageServico;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SessionStorageService);
+    service = TestBed.inject(SessionStorageServico);
   });
 
   it('should be created', () => {
