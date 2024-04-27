@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ServicoMensagemServico {
 
-  private url:string = 'https://api-mxm-alm.azurewebsites.net/api/SendEmail/send';
+  private url:string = 'https://mxm-api.marcusvogado.com/api/SendEmail/send';
 
   
 

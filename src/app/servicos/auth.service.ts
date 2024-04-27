@@ -9,7 +9,7 @@ import { UsuarioLogado as UsuarioLogado } from '../Modelos/UsuarioLogado';
 })
 export class AuthServico {
 
-  private url:string = 'https://api-mxm-alm.azurewebsites.net/api/Auth/auth';
+  private url:string = 'https://mxm-api.marcusvogado.com/api/Auth/auth';
 
   constructor(private http: HttpClient) { }
 
