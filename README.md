@@ -42,7 +42,7 @@
 | 3º passo | Instalar as dependências do Angular: _npm install_ | 
 | 4º passo | Rodar o projeto com o comando **ng serve ou  ng serve --o** | ____
 
-## :eyeglasses: Colaboradora 
+## :eyeglasses: Autora
 
 <div><img src="https://github.com/luizaferreirafonseca.png" width="100px;"/></div>
 <div><a href="https://github.com/luizaferreirafonseca">Luiza Ferreira</a></div>
