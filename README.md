@@ -27,6 +27,9 @@
 * Utilização da biblioteca NgPrime e Quill Editor, proporcionando funcionalidades avançadas de edição e formatação de texto.
 * Responsividade nas telas para garantir uma boa experiência em dispositivos móveis.
 * Segurança reforçada com JWT Token.
+* Para autenticação com usuário previamente cadastrado:
+  - e-mail: adm-escolacooper@cooper.com
+  - senha: Usuario123!
 
 ## 🔧 Tecnologia utilizada 
 
