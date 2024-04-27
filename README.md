@@ -14,7 +14,7 @@
 
 ☑️ Tela de Login 
 
-* A tela de login permite que administradores autentiquem-se para acessar a funcionalidade principal. É necessário ter um cadastro prévio com a API para utilizar essa tela. Após o login bem-sucedido, o usuário é redirecionado à página de envio de e-mails, com seus dados salvos na sessão e um token JWT gerado para segurança das requisições.
+* A tela de login é uma funcionalidade extra para a aplicação, que permite que administradores autentiquem-se para acessar a funcionalidade principal. É necessário ter um cadastro prévio com a API para utilizar essa tela. Após o login bem-sucedido, o usuário é redirecionado à página de envio de e-mails, com seus dados salvos na sessão e um token JWT gerado para segurança das requisições.
 
 ☑️ Tela Principal (envio de e-mails) 
 
