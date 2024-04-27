@@ -1,7 +1,7 @@
 <h1 align="center"> 📧: Projeto Final MXM - Mensageiro Escola Cooper  </h1>
 
 ## 🌐 Visão do projeto
-* Este é o projeto final da MXM, que consiste em um sistema de mensageria para envio de e-mails a partir de uma fila disparada para remetentes. Esta parte do projeto é o front-end, cujo objetivo é criar uma página de envio de e-mails com campos para nome, e-mail e texto formatável (negrito, tamanho da fonte, alinhamento). Os dados inseridos nessa página serão enviados para a API, que os colocará em uma fila. Dessa forma, pensamos na criação de um sistema de envio de mensagens diretamente de coordenação de uma escola, onde os administradores responsáveis (como coordenadores e/ou colaboradores no geral) poderão organizar e-mails para enviar aos responsáveis dos alunos da escola, como forma de comunicados, etc.
+* Este é o projeto final da MXM, que consiste em um sistema de mensageria para envio de e-mails a partir de uma fila disparada para remetentes. Esta parte do projeto é o front-end, cujo objetivo é criar uma página de envio de e-mails com campos para nome, e-mail e texto formatável (negrito, tamanho da fonte, alinhamento). Os dados inseridos nessa página serão enviados (com suas devidas formatações no body e com o formato HTML) para a API, que os colocará em uma fila. Dessa forma, pensamos na criação de um sistema de envio de mensagens diretamente de coordenação de uma escola, onde os administradores responsáveis (como coordenadores e/ou colaboradores no geral) poderão organizar e-mails para enviar aos responsáveis dos alunos da escola, como forma de comunicados, etc.
 
 * 🚀 <a href="https://luiza-mxm-frontend.vercel.app/">Acesse o deploy!</a>
 
