@@ -1,6 +1,6 @@
 <app-header-login></app-header-login>
 
-<div class="conteudo-total d-flex flex-column aligin-items-center">
+<!-- <div class="conteudo-total d-flex flex-column aligin-items-center">
     <div class="container d-flex flex-column aligin-items-center justify-content-center">
         <h2 class="text-center mb-4 text-white">Área do Administrador</h2>
         <div class="row justify-content-center aligin-items-center">
@@ -22,4 +22,26 @@
         </div>
     </div>
    
+</div> -->
+
+
+<div class="login-container">
+    <div class="login-box d-flex flex-column">
+        <h2 class="fs-4 text-center">Área do administrador</h2>
+        <p class="text-center">Por favor, insira seus dados abaixo.</p>
+        <form class="d-flex flex-column justify-content-center" [formGroup]="formulario">
+            <div class="mb-3 ">
+                <label for="email" class="form-label"  placeholder="Insira seu email">Email:</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Insira seu email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha:</label>
+                <input type="password" formControlName="senha" class="form-control" id="inputPassword" placeholder="Insira sua senha"  required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block" (click)="sendLogin()">Login</button>
+        </form>
+        <p *ngIf="erro" class="erromensagem">Credenciais inválidas!</p>
+    </div>
 </div>
+
