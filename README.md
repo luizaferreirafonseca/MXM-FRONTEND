@@ -5,7 +5,8 @@
 
 * 🚀 <a href="https://luiza-mxm-frontend.vercel.app/">Acesse o deploy!</a>
 
-  
+![image](https://github.com/ALM-MXM/MXM-FRONTEND/assets/139771003/2366fa83-1279-4e21-9786-388fe002d8df)
+
 ![image](https://github.com/ALM-MXM/MXM-FRONTEND/assets/139771003/4712baeb-3872-4b70-aff5-a1cf26768904)
 
 ---------

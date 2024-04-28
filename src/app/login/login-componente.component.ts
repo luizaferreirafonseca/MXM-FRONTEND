@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderLoginComponent } from '../header-login/header-login.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthServico } from '../servicos/auth.service';
 import { SessionStorageServico } from '../servicos/session-storage-servico';
 import { Login } from '../Modelos/Login';
@@ -22,16 +22,16 @@ export class LoginComponenteComponent {
   erro: boolean = false;
 
   formulario = new FormGroup({
-    email: new FormControl(''),
-    senha: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    senha: new FormControl('', [Validators.required])
   })
 
   sendLogin() {
 
-    if (this.formulario.value.email && this.formulario.value.senha) {
+    if (this.formulario.valid) {
       const login: Login = {
-        Email: this.formulario.value.email,
-        Senha: this.formulario.value.senha
+        Email: this.formulario.value.email || '',
+        Senha: this.formulario.value.senha || '',
 
       }
 
