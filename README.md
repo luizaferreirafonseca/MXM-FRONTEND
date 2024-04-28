@@ -19,7 +19,7 @@
 
 ☑️ Tela Principal (envio de e-mails) 
 
-* Nesta tela, o administrador pode enviar e-mails para os colaboradores. Os campos disponíveis são: nome, e-mail e corpo da mensagem. O campo de corpo da mensagem permite formatação, incluindo opções como negrito, sublinhado, itálico, alinhamento e tamanho da fonte. Todos os campos possuem validações para garantir que não sejam enviados conteúdos vazios ou com palavras inapropriadas. Caso ocorra alguma invalidade, modais informativos aparecerão para orientar o usuário.
+* Nesta tela, o administrador pode enviar e-mails para os colaboradores. Os campos disponíveis são: nome, e-mail e corpo da mensagem. O campo de corpo da mensagem permite formatação, incluindo opções como negrito, sublinhado, itálico, alinhamento e tamanho da fonte. Todos os campos possuem validações para garantir que não sejam enviados conteúdos vazios ou com palavras inapropriadas. Caso ocorra alguma invalidade, modais informativos aparecerão para orientar o usuário. Todas as requisições para o envio de e-mails são protegidas por um cabeçalho de segurança token, o JWT (JSON Web Token), que é gerado e incluído nas requisições. Esse token serve como uma forma de autenticação e autorização, garantindo que apenas usuários autenticados e autorizados possam enviar e-mails por meio da aplicação. 
 
 ## 💡 Detalhes de produção 
 
