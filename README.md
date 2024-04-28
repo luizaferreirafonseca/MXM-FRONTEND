@@ -36,6 +36,7 @@
 
 * HTML e CSS 
 * Framework Angular 17
+* Bootstrap
 
 ## :arrow_forward: Execução do projeto
 
